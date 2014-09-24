@@ -1,3 +1,11 @@
+/*! 
+ * stickr - jQuery plugin for sticky elements (v0.0.1)
+ * https://github.com/woneob/stickr
+ *
+ * License: MIT License (MIT)
+ * License URI: http://www.opensource.org/licenses/mit-license.html
+ */
+
 ;(function($, win, doc) {
 	$.fn.stickr = function() {
 		var scrollY = $(win).scrollTop();
