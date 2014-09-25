@@ -10,7 +10,7 @@
 	$.fn.stickr = function() {
 		var scrollY = $(win).scrollTop();
 
-		if (typeof doc.body.style.maxHeight != 'undefined') {
+		if (typeof doc.body.style.maxHeight === 'undefined') {
 			// 브라우저가 IE6 이하일 경우 종료
 			return;
 		}
