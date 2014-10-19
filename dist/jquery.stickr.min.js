@@ -1,6 +1,6 @@
 /*!
  * Name: stickr - jQuery plugin for sticky elements.
- * Version: v0.1.1
+ * Version: v0.1.2
  * Created: 2014-10-20
  * Homepage: https://github.com/woneob/stickr
  * License: MIT
