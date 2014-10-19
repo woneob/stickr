@@ -1,6 +1,17 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		banner: [
+			'/*!',
+			' * Plugin name: <%= pkg.name %> - <%= pkg.description %>',
+			' * Version: v<%= pkg.version %>',
+			' * Created: <%= grunt.template.today("yyyy-mm-dd") %>',
+			' * Homepage: <%= pkg.homepage %>',
+			' * ',
+			' * License: MIT License (MIT)',
+			' * License URI: http://www.opensource.org/licenses/mit-license.html',
+			' */\n\n'
+		].join('\n'),
 		jshint: {
 			hint: {
 				files: {
@@ -17,17 +28,7 @@ module.exports = function(grunt) {
 		uglify: {
 			prototype: {
 				options: {
-					banner: [
-						'/*!',
-						' * Plugin name: <%= pkg.name %> - <%= pkg.description %>',
-						' * Version: v<%= pkg.version %>',
-						' * Created: <%= grunt.template.today("yyyy-mm-dd") %>',
-						' * Homepage: <%= pkg.homepage %>',
-						' * ',
-						' * License: MIT License (MIT)',
-						' * License URI: http://www.opensource.org/licenses/mit-license.html',
-						' */\n\n'
-					].join('\n')
+					banner: '<%= banner %>',
 				},
 				files: [{
 					expand: true,
