@@ -3,9 +3,7 @@
  * Version: v0.1.0
  * Created: 2014-10-20
  * Homepage: https://github.com/woneob/stickr
- * 
- * License: MIT License (MIT)
- * License URI: http://www.opensource.org/licenses/mit-license.html
+ * License: MIT
  */
 
 (function($, win, doc) {

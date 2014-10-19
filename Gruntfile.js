@@ -7,9 +7,7 @@ module.exports = function(grunt) {
 			' * Version: v<%= pkg.version %>',
 			' * Created: <%= grunt.template.today("yyyy-mm-dd") %>',
 			' * Homepage: <%= pkg.homepage %>',
-			' * ',
-			' * License: MIT License (MIT)',
-			' * License URI: http://www.opensource.org/licenses/mit-license.html',
+			' * License: <%= pkg.license %>',
 			' */\n\n'
 		].join('\n'),
 		jshint: {
