@@ -9,3 +9,4 @@ lib-cov
 *.sublime-workspace
 *.sublime-project
 thumbs.db
+node_modules
