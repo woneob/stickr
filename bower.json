@@ -1,0 +1,28 @@
+{
+  "name": "stickr",
+  "version": "0.0.1",
+  "homepage": "https://github.com/woneob/stickr",
+  "authors": [
+    "1UP <1up@1upz.com>"
+  ],
+  "description": "jQuery plugin for sticky elements.",
+  "main": "dist/jquery.stickr.min.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "sticker",
+    "sticky",
+    "fixed",
+    "float"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
