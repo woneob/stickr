@@ -1,6 +1,6 @@
 {
   "name": "stickr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "jQuery plugin for sticky elements.",
   "main": "Gruntfile.js",
   "dependencies": {

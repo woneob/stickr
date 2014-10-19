@@ -1,6 +1,15 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		banner: [
+			'/*!',
+			' * Name: <%= pkg.name %> - <%= pkg.description %>',
+			' * Version: v<%= pkg.version %>',
+			' * Created: <%= grunt.template.today("yyyy-mm-dd") %>',
+			' * Homepage: <%= pkg.homepage %>',
+			' * License: <%= pkg.license %>',
+			' */\n\n'
+		].join('\n'),
 		jshint: {
 			hint: {
 				files: {
@@ -15,19 +24,26 @@ module.exports = function(grunt) {
 			dist: 'dist/**/*.*'
 		},
 		uglify: {
-			prototype: {
+			beautify: {
 				options: {
-					banner: [
-						'/*!',
-						' * Plugin name: <%= pkg.name %> - <%= pkg.description %>',
-						' * Version: v<%= pkg.version %>',
-						' * Created: <%= grunt.template.today("yyyy-mm-dd") %>',
-						' * Homepage: <%= pkg.homepage %>',
-						' * ',
-						' * License: MIT License (MIT)',
-						' * License URI: http://www.opensource.org/licenses/mit-license.html',
-						' */\n\n'
-					].join('\n')
+					banner: '<%= banner %>',
+					mangle: false,
+					compress: false,
+					beautify: true,
+					preserveComments: true,
+					footer: '\n'
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.js', '!**/*.min.js'],
+					dest: 'dist/'
+				}]
+			},
+			minify: {
+				options: {
+					banner: '<%= banner %>',
+					footer: '\n'
 				},
 				files: [{
 					expand: true,
