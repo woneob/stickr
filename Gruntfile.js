@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		banner: [
 			'/*!',
-			' * Plugin name: <%= pkg.name %> - <%= pkg.description %>',
+			' * Name: <%= pkg.name %> - <%= pkg.description %>',
 			' * Version: v<%= pkg.version %>',
 			' * Created: <%= grunt.template.today("yyyy-mm-dd") %>',
 			' * Homepage: <%= pkg.homepage %>',
