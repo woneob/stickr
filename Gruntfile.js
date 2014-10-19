@@ -26,9 +26,26 @@ module.exports = function(grunt) {
 			dist: 'dist/**/*.*'
 		},
 		uglify: {
-			prototype: {
+			beautify: {
 				options: {
 					banner: '<%= banner %>',
+					mangle: false,
+					compress: false,
+					beautify: true,
+					preserveComments: true,
+					footer: '\n'
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.js', '!**/*.min.js'],
+					dest: 'dist/'
+				}]
+			},
+			minify: {
+				options: {
+					banner: '<%= banner %>',
+					footer: '\n'
 				},
 				files: [{
 					expand: true,
