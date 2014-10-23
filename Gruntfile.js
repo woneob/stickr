@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 			options: {
 				force: true
 			},
-			dist: 'dist/**/*.*'
+			dist: 'dist/**/*.*'	
 		},
 		uglify: {
 			beautify: {
@@ -62,12 +62,35 @@ module.exports = function(grunt) {
 				dest: 'examples/javascripts'
 			}
 		},
+		connect: {
+			server: {
+				options: {
+					port: 9001,
+					base: 'examples'
+				}
+			}
+		},
+		watch: {
+			client: {
+				files: 'src/**/*.*',
+				tasks: ['jshint', 'clean', 'uglify', 'copy'],
+				options: {
+					spawn: false,
+				}
+			},
+			grunt: {
+				files: ['Gruntfile.js']
+			}
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'copy']);
+	grunt.registerTask('server', ['jshint', 'clean', 'uglify', 'copy', 'connect', 'watch']);
 };
