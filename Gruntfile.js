@@ -54,11 +54,21 @@ module.exports = function(grunt) {
 					extDot: 'last'
 				}]
 			}
-		}
+		},
+		copy: {
+			jsCopy: {
+				expand: true,
+				cwd: 'dist/',
+				src: '**/*.min.js',
+				dest: 'examples/javascripts'
+			}
+		},
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.registerTask('default', ['jshint', 'clean', 'uglify']);
+	grunt.loadNpmTasks('grunt-contrib-copy');
+
+	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'copy']);
 };
