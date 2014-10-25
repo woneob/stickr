@@ -81,6 +81,12 @@ module.exports = function(grunt) {
 			grunt: {
 				files: ['Gruntfile.js']
 			}
+		},
+		'gh-pages': {
+			options: {
+				base: 'examples'
+			},
+			src: '**/*'
 		}
 	});
 
@@ -90,7 +96,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-gh-pages');
 
 	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'copy']);
 	grunt.registerTask('server', ['jshint', 'clean', 'uglify', 'copy', 'connect', 'watch']);
+	grunt.registerTask('pages', ['gh-pages']);
 };
