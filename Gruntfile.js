@@ -34,9 +34,9 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'src/',
+					cwd: 'src/<%= pkg.name %>/',
 					src: ['**/*.js', '!**/*.min.js'],
-					dest: 'dist/'
+					dest: 'dist/<%= pkg.name %>/'
 				}]
 			},
 			minify: {
@@ -44,36 +44,38 @@ module.exports = function(grunt) {
 					banner: '<%= banner %>',
 					footer: '\n'
 				},
-				files: [{
-					expand: true,
-					cwd: 'src/',
-					src: ['**/*.js', '!**/*.min.js'],
-					dest: 'dist/',
-					ext: '.min.js',
-					extDot: 'last'
-				}]
-			}
-		},
-		copy: {
-			jsCopy: {
-				expand: true,
-				cwd: 'dist/',
-				src: '**/*.min.js',
-				dest: 'examples/javascripts'
+				files: [
+					{
+						expand: true,
+						cwd: 'src/<%= pkg.name %>/',
+						src: ['**/*.js', '!**/*.min.js'],
+						dest: 'dist/<%= pkg.name %>/',
+						ext: '.min.js',
+						extDot: 'last'
+					},
+					{
+						expand: true,
+						cwd: 'src/<%= pkg.name %>/',
+						src: ['**/*.js', '!**/*.min.js'],
+						dest: 'dist/gh-pages/scripts/',
+						ext: '.min.js',
+						extDot: 'last'
+					}
+				]
 			}
 		},
 		connect: {
 			server: {
 				options: {
 					port: 9001,
-					base: 'examples'
+					base: 'dist/gh-pages/'
 				}
 			}
 		},
 		watch: {
 			client: {
 				files: 'src/**/*.*',
-				tasks: ['jshint', 'clean', 'uglify', 'copy'],
+				tasks: ['jshint', 'clean', 'uglify'],
 				options: {
 					spawn: false,
 				}
@@ -99,7 +101,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-gh-pages');
 
-	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'copy']);
-	grunt.registerTask('server', ['jshint', 'clean', 'uglify', 'copy', 'connect', 'watch']);
+	grunt.registerTask('default', ['jshint', 'clean', 'uglify']);
+	grunt.registerTask('server', ['jshint', 'clean', 'uglify', 'connect', 'watch']);
 	grunt.registerTask('pages', ['gh-pages']);
 };
