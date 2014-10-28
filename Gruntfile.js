@@ -71,6 +71,23 @@ module.exports = function(grunt) {
 				output: 'dist/gh-pages/index.html'
 			}
 		},
+		less: {
+			style: {
+				options: {
+					compress: false,
+					cleancss: false,
+					banner: '<%= banner %>'
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/gh-pages/styles/',
+					src: ['**/*.less', '!**/_*.less'],
+					dest: 'dist/gh-pages/styles/',
+					ext: '.css',
+					extDot: 'last'
+				}]
+			}
+		},
 		connect: {
 			server: {
 				options: {
@@ -90,6 +107,13 @@ module.exports = function(grunt) {
 				],
 				options: {
 					spawn: false,
+				}
+			},
+			less: {
+				files: 'src/gh-pages/styles/**/*.less',
+				tasks: 'less',
+				options: {
+					nospawn: true
 				}
 			},
 			grunt: {
@@ -112,9 +136,28 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-compile-handlebars');
+	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-gh-pages');
 
-	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'compile-handlebars']);
-	grunt.registerTask('server', ['jshint', 'clean', 'uglify', 'compile-handlebars', 'connect', 'watch']);
-	grunt.registerTask('pages', ['gh-pages']);
+	grunt.registerTask('default', [
+		'jshint',
+		'clean',
+		'uglify',
+		'compile-handlebars',
+		'lses'
+	]);
+
+	grunt.registerTask('server', [
+		'jshint', 
+		'clean', 
+		'uglify', 
+		'compile-handlebars', 
+		'less', 
+		'connect', 
+		'watch'
+	]);
+
+	grunt.registerTask('pages', [
+		'gh-pages'
+	]);
 };
