@@ -64,6 +64,13 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+		'compile-handlebars': {
+			index: {
+				template: 'src/gh-pages/index.handlebars',
+				templateData: 'src/gh-pages/data/index.json',
+				output: 'dist/gh-pages/index.html'
+			}
+		},
 		connect: {
 			server: {
 				options: {
@@ -99,9 +106,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-compile-handlebars');
 	grunt.loadNpmTasks('grunt-gh-pages');
 
-	grunt.registerTask('default', ['jshint', 'clean', 'uglify']);
-	grunt.registerTask('server', ['jshint', 'clean', 'uglify', 'connect', 'watch']);
+	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'compile-handlebars']);
+	grunt.registerTask('server', ['jshint', 'clean', 'uglify', 'compile-handlebars', 'connect', 'watch']);
 	grunt.registerTask('pages', ['gh-pages']);
 };
