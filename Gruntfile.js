@@ -82,7 +82,12 @@ module.exports = function(grunt) {
 		watch: {
 			client: {
 				files: 'src/**/*.*',
-				tasks: ['jshint', 'clean', 'uglify'],
+				tasks: [
+					'jshint',
+					'clean',
+					'uglify',
+					'compile-handlebars'
+				],
 				options: {
 					spawn: false,
 				}
