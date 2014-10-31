@@ -67,7 +67,10 @@ module.exports = function(grunt) {
 		'compile-handlebars': {
 			index: {
 				template: 'src/gh-pages/index.handlebars',
-				templateData: 'src/gh-pages/data/index.json',
+				templateData: [
+					'package.json',
+					'src/gh-pages/data/index.json'
+				],
 				output: 'dist/gh-pages/index.html'
 			}
 		},
