@@ -97,6 +97,12 @@ module.exports = function(grunt) {
 				cwd: 'src/images/',
 				src: '**/*.*',
 				dest: 'dist/gh-pages/images/'
+			},
+			rootCfg: {
+				expand: true,
+				cwd: 'src/',
+				src: ['*', '!*.handlebars'],
+				dest: 'dist/gh-pages/'
 			}
 		},
 		connect: {
@@ -108,46 +114,41 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
+			options: {
+				spawn: false,
+			},
 			scripts: {
 				files: 'src/scripts/**/*.js',
 				tasks: [
 					'jshint',
 					'clean:scripts',
 					'uglify'
-				],
-				options: {
-					spawn: false,
-				}
+				]
 			},
 			html: {
 				files: 'src/**/*.handlebars',
 				tasks: [
 					'clean:html',
 					'compile-handlebars'
-				],
-				options: {
-					spawn: false,
-				}
+				]
 			},
 			images: {
 				files: 'src/images/**/*.*',
 				tasts: [
 					'clean:images',
 					'copy:images'
-				],
-				options: {
-					spawn: false,
-				}
+				]
 			},
 			less: {
 				files: 'src/styles/**/*.less',
 				tasks: [
 					'clean:styles',
 					'less'
-				],
-				options: {
-					nospawn: true
-				}
+				]
+			},
+			rootCfg: {
+				files: ['src/*', '!src/*.handlebars'],
+				tasks: ['copy:rootCfg']
 			},
 			grunt: {
 				files: ['Gruntfile.js']
