@@ -12,17 +12,41 @@ module.exports = function(grunt) {
 		jshint: {
 			hint: {
 				files: {
-					src: 'src/**/*.js'
+					src: 'src/scripts/**/*.js'
 				}
 			}
 		},
 		clean: {
-			options: {
-				force: true
-			},
-			dist: 'dist/**/*.*'	
+			scripts: "dist/**/*.js",
+			images: "dist/gh-pages/images/**/*.*",
+			html: "dist/gh-pages/**/*.html",
+			styles: "dist/gh-pages/styles/**/*.css"
 		},
 		uglify: {
+			pageScript: {
+				options: {
+					banner: '<%= banner %>',
+					footer: '\n'
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'src/scripts/',
+						src: ['**/*.js', '!**/*.min.js'],
+						dest: 'dist/gh-pages/scripts/',
+						ext: '.min.js',
+						extDot: 'last'
+					},
+					{
+						expand: true,
+						cwd: 'src/scripts/stickr/',
+						src: '**/*.js',
+						dest: 'dist/stickr/',
+						ext: '.min.js',
+						extDot: 'last'
+					}
+				]
+			},
 			beautify: {
 				options: {
 					banner: '<%= banner %>',
@@ -34,42 +58,18 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'src/<%= pkg.name %>/',
-					src: ['**/*.js', '!**/*.min.js'],
-					dest: 'dist/<%= pkg.name %>/'
+					cwd: 'src/scripts/stickr/',
+					src: '**/*.js',
+					dest: 'dist/stickr/'
 				}]
-			},
-			minify: {
-				options: {
-					banner: '<%= banner %>',
-					footer: '\n'
-				},
-				files: [
-					{
-						expand: true,
-						cwd: 'src/<%= pkg.name %>/',
-						src: ['**/*.js', '!**/*.min.js'],
-						dest: 'dist/<%= pkg.name %>/',
-						ext: '.min.js',
-						extDot: 'last'
-					},
-					{
-						expand: true,
-						cwd: 'src/<%= pkg.name %>/',
-						src: ['**/*.js', '!**/*.min.js'],
-						dest: 'dist/gh-pages/scripts/',
-						ext: '.min.js',
-						extDot: 'last'
-					}
-				]
 			}
 		},
 		'compile-handlebars': {
 			index: {
-				template: 'src/gh-pages/index.handlebars',
+				template: 'src/index.handlebars',
 				templateData: [
 					'package.json',
-					'src/gh-pages/data/index.json'
+					'src/data/index.json'
 				],
 				output: 'dist/gh-pages/index.html'
 			}
@@ -83,12 +83,20 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'src/gh-pages/styles/',
+					cwd: 'src/styles/',
 					src: ['**/*.less', '!**/_*.less'],
 					dest: 'dist/gh-pages/styles/',
 					ext: '.css',
 					extDot: 'last'
 				}]
+			}
+		},
+		copy: {
+			images: {
+				expand: true,
+				cwd: 'src/images/',
+				src: '**/*.*',
+				dest: 'dist/gh-pages/images/'
 			}
 		},
 		connect: {
@@ -100,21 +108,43 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
-			client: {
-				files: 'src/**/*.*',
+			scripts: {
+				files: 'src/scripts/**/*.js',
 				tasks: [
 					'jshint',
-					'clean',
-					'uglify',
+					'clean:scripts',
+					'uglify'
+				],
+				options: {
+					spawn: false,
+				}
+			},
+			html: {
+				files: 'src/**/*.handlebars',
+				tasks: [
+					'clean:html',
 					'compile-handlebars'
 				],
 				options: {
 					spawn: false,
 				}
 			},
+			images: {
+				files: 'src/images/**/*.*',
+				tasts: [
+					'clean:images',
+					'copy:images'
+				],
+				options: {
+					spawn: false,
+				}
+			},
 			less: {
-				files: 'src/gh-pages/styles/**/*.less',
-				tasks: 'less',
+				files: 'src/styles/**/*.less',
+				tasks: [
+					'clean:styles',
+					'less'
+				],
 				options: {
 					nospawn: true
 				}
@@ -125,7 +155,7 @@ module.exports = function(grunt) {
 		},
 		'gh-pages': {
 			options: {
-				base: 'examples',
+				base: 'dist/gh-pages/',
 				message: 'Auto-generated commit:'
 			},
 			src: '**/*'
@@ -147,16 +177,18 @@ module.exports = function(grunt) {
 		'clean',
 		'uglify',
 		'compile-handlebars',
+		'copy',
 		'lses'
 	]);
 
 	grunt.registerTask('server', [
-		'jshint', 
-		'clean', 
-		'uglify', 
-		'compile-handlebars', 
-		'less', 
-		'connect', 
+		'jshint',
+		'clean',
+		'uglify',
+		'compile-handlebars',
+		'copy',
+		'less',
+		'connect',
 		'watch'
 	]);
 
