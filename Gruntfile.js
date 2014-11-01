@@ -78,8 +78,12 @@ module.exports = function(grunt) {
 			style: {
 				options: {
 					compress: false,
-					cleancss: false,
-					banner: '<%= banner %>'
+					cleancss: true,
+					banner: '<%= banner %>',
+					cleancssOptions: {
+						keepBreaks: true,
+						keepSpecialComments: 1
+					}
 				},
 				files: [{
 					expand: true,
