@@ -12,7 +12,10 @@ module.exports = function(grunt) {
 		jshint: {
 			hint: {
 				files: {
-					src: 'src/scripts/**/*.js'
+					src: [
+						'src/scripts/**/*.js',
+						'!src/scripts/**/*.min.js'
+					]
 				}
 			}
 		},
@@ -96,6 +99,12 @@ module.exports = function(grunt) {
 			}
 		},
 		copy: {
+			minimizedJs: {
+				expand: true,
+				cwd: 'src/scripts/',
+				src: '**/*.min.js',
+				dest: 'dist/gh-pages/'
+			},
 			images: {
 				expand: true,
 				cwd: 'src/images/',
@@ -122,12 +131,19 @@ module.exports = function(grunt) {
 				spawn: false,
 			},
 			scripts: {
-				files: 'src/scripts/**/*.js',
+				files: [
+					'src/scripts/**/*.js',
+					'!src/scripts/**/*.min.js'
+				],
 				tasks: [
 					'jshint',
 					'clean:scripts',
 					'uglify'
 				]
+			},
+			minimizedJs: {
+				files: 'src/scripts/**/*.min.js',
+				tasts: 'copy:minimizedJs'
 			},
 			html: {
 				files: 'src/**/*.handlebars',
