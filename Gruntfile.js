@@ -155,7 +155,15 @@ module.exports = function(grunt) {
 				tasks: ['copy:rootCfg']
 			},
 			grunt: {
-				files: ['Gruntfile.js']
+				files: 'Gruntfile.js',
+				tasks: [
+					'jshint',
+					'clean',
+					'uglify',
+					'compile-handlebars',
+					'copy',
+					'less'
+				]
 			}
 		},
 		'gh-pages': {
