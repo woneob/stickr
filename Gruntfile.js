@@ -143,7 +143,7 @@ module.exports = function(grunt) {
 			},
 			minimizedJs: {
 				files: 'src/scripts/**/*.min.js',
-				tasts: 'copy:minimizedJs'
+				tasks: 'copy:minimizedJs'
 			},
 			html: {
 				files: 'src/**/*.handlebars',
@@ -154,7 +154,7 @@ module.exports = function(grunt) {
 			},
 			images: {
 				files: 'src/images/**/*.*',
-				tasts: [
+				tasks: [
 					'clean:images',
 					'copy:images'
 				]
