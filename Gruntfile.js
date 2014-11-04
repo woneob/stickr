@@ -20,6 +20,9 @@ module.exports = function(grunt) {
 			}
 		},
 		clean: {
+			options: {
+				force: true
+			},
 			scripts: "dist/**/*.js",
 			images: "dist/gh-pages/images/**/*.*",
 			html: "dist/gh-pages/**/*.html",
