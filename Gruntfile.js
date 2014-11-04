@@ -227,7 +227,7 @@ module.exports = function(grunt) {
 		'uglify',
 		'compile-handlebars',
 		'copy',
-		'lses'
+		'less'
 	]);
 
 	grunt.registerTask('server', [
