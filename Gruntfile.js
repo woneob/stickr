@@ -26,7 +26,8 @@ module.exports = function(grunt) {
 			scripts: "dist/**/*.js",
 			images: "dist/gh-pages/images/**/*.*",
 			html: "dist/gh-pages/**/*.html",
-			styles: "dist/gh-pages/styles/**/*.css"
+			styles: "dist/gh-pages/styles/**/*.css",
+			fonts: "dist/gh-pages/fonts/**/*.*"
 		},
 		uglify: {
 			pageScript: {
@@ -114,6 +115,12 @@ module.exports = function(grunt) {
 				src: '**/*.*',
 				dest: 'dist/gh-pages/images/'
 			},
+			fonts: {
+				expand: true,
+				cwd: 'src/fonts/',
+				src: '**/*.*',
+				dest: 'dist/gh-pages/fonts/'
+			},
 			rootCfg: {
 				expand: true,
 				cwd: 'src/',
@@ -160,6 +167,16 @@ module.exports = function(grunt) {
 				tasks: [
 					'clean:images',
 					'copy:images'
+				]
+			},
+			fonts: {
+				options: {
+					spawn: false,
+				},
+				files: 'src/fonts/**/*.*',
+				tasks: [
+					'clean:fonts',
+					'copy:fonts'
 				]
 			},
 			less: {
