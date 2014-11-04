@@ -102,6 +102,26 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		svgmin: {
+			options: {
+				plugins: [
+					{
+						removeViewBox: false
+					},
+					{
+						removeUselessStrokeAndFill: false
+					}
+				]
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'src/images/',
+					src: '**/*.svg',
+					dest: 'dist/gh-pages/images/'
+				}]
+			}
+		},
 		copy: {
 			minimizedJs: {
 				expand: true,
@@ -112,7 +132,7 @@ module.exports = function(grunt) {
 			images: {
 				expand: true,
 				cwd: 'src/images/',
-				src: '**/*.*',
+				src: ['**/*.*', '!**/*.svg'],
 				dest: 'dist/gh-pages/images/'
 			},
 			fonts: {
@@ -166,7 +186,8 @@ module.exports = function(grunt) {
 				files: 'src/images/**/*.*',
 				tasks: [
 					'clean:images',
-					'copy:images'
+					'copy:images',
+					'svgmin'
 				]
 			},
 			fonts: {
@@ -219,6 +240,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-compile-handlebars');
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-gh-pages');
 
 	grunt.registerTask('default', [
@@ -227,6 +249,7 @@ module.exports = function(grunt) {
 		'uglify',
 		'compile-handlebars',
 		'copy',
+		'svgmin',
 		'less'
 	]);
 
@@ -236,6 +259,7 @@ module.exports = function(grunt) {
 		'uglify',
 		'compile-handlebars',
 		'copy',
+		'svgmin',
 		'less',
 		'connect',
 		'watch'
