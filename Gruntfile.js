@@ -127,7 +127,8 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'src/scripts/',
 				src: '**/*.min.js',
-				dest: 'dist/gh-pages/scripts/'
+				dest: 'dist/gh-pages/scripts/',
+				extDot: 'last'
 			},
 			images: {
 				expand: true,
