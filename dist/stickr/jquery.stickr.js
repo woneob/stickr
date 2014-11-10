@@ -7,11 +7,11 @@
 
 (function($, win, doc) {
     $.fn.stickr = function() {
-        var scrollY = $(win).scrollTop();
         if (typeof doc.body.style.maxHeight === "undefined") {
             // 브라우저가 IE6 이하일 경우 종료
             return;
         }
+        var scrollY = $(win).scrollTop();
         return this.each(function() {
             var $this = $(this);
             var thisHeight = $this.outerHeight();
@@ -44,11 +44,7 @@
                 return false;
             };
             observer();
-            $(win).on("scroll", function() {
-                // 스크롤 이벤트 발생 시 scrollY 값을 업데이트하고, ovserver()를 실행한다
-                scrollY = $(win).scrollTop();
-                observer();
-            });
+            $(win).on("scroll", observer);
         });
     };
 })(jQuery, window, document);
