@@ -32,30 +32,32 @@
 			thisHeight += gap;
 			thisOffsetY -= gap;
 
-			if (winHeight < thisHeight) {
-				// 윈도우 높이가 thisHeight 보다 작을 경우(윈도우 높이룰 초과할 경우)
-				// this 엘리먼트가 고정되지 않도록 each 반복을 continue 시킴
-				return true;
-			}
-
 			var observer = function() {
 				scrollY = $(win).scrollTop();
 
 				var originMarginTop = $this.css('margin-top').replace(/[^-\d\.]/g, '');
 				var styles = {};
 
-				if (scrollY < thisOffsetY) {
+				if (winHeight < thisHeight) {
 					$this.removeClass('fixed absolute');
 					styles = {
 						position: '',
 						top: ''
 					};
 				} else {
-					$this.addClass('fixed').removeClass('absolute');
-					styles = {
-						position: 'fixed',
-						top: gap - originMarginTop
-					};
+					if (scrollY < thisOffsetY) {
+						$this.removeClass('fixed absolute');
+						styles = {
+							position: '',
+							top: ''
+						};
+					} else {
+						$this.addClass('fixed').removeClass('absolute');
+						styles = {
+							position: 'fixed',
+							top: gap - originMarginTop
+						};
+					}
 				}
 
 				return $this.css(styles);
