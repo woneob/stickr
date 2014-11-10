@@ -37,6 +37,7 @@
                 return true;
             }
             var observer = function() {
+                scrollY = $(win).scrollTop();
                 if (scrollY > thisOffsetY) {
                     // scrollY 값이 thisOffsetY 보다 더 클 경우 (this 엘리먼트가 상단 뷰포트를 벗어날 경우)
                     // .fixed 클래스를 추가하고 marginTop 값을 gap 값으로 지정한다
