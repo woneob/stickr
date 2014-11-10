@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 				files: {
 					src: [
 						'src/scripts/**/*.js',
-						'!src/scripts/**/*.min.js'
+						'!src/scripts/**/*.{min,pack}.js'
 					]
 				}
 			}
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: 'src/scripts/',
-						src: ['**/*.js', '!**/*.min.js'],
+						src: ['**/*.js', '!**/*.{min,pack}.js'],
 						dest: 'dist/gh-pages/scripts/',
 						ext: '.min.js',
 						extDot: 'last'
