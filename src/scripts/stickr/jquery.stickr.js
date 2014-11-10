@@ -19,6 +19,15 @@
 			// gap이 숫자가 아니거나 음수일 경우에 0 으로 변환
 			gap = Math.max(0, gap) || 0;
 
+			var $parentElem = $this.offsetParent();
+			var stopY;
+			var parentHeight;
+
+			if ($parentElem.length) {
+				parentHeight = $parentElem.outerHeight();
+				stopY =  $parentElem.offset().top +  parentHeight - thisHeight - gap;
+			}
+
 			// thisHeight, thisOffset에 gap 값을 반영
 			thisHeight += gap;
 			thisOffsetY -= gap;
