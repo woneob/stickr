@@ -165,7 +165,7 @@ module.exports = function(grunt) {
 			scripts: {
 				files: [
 					'src/scripts/**/*.js',
-					'!src/scripts/**/*.min.js'
+					'!src/scripts/**/*.{min,pack}.js'
 				],
 				tasks: [
 					'jshint',
@@ -174,8 +174,11 @@ module.exports = function(grunt) {
 				]
 			},
 			minimizedJs: {
-				files: 'src/scripts/**/*.min.js',
-				tasks: 'copy:minimizedJs'
+				files: 'src/scripts/**/*.{min,pack}.js',
+				tasks: [
+					'clean:minimizedJs',
+					'copy:minimizedJs'
+				]
 			},
 			html: {
 				files: 'src/**/*.handlebars',
