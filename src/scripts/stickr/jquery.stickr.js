@@ -14,7 +14,7 @@
 			var winHeight = $(win).height();
 
 			// "data-stickr-gap" 속성으로부터 값을 가져옴
-			var gap = parseInt($this.attr('data-stickr-gap'), 10);
+			var gap = parseInt($this.data('stickrGap'), 10);
 
 			// gap이 숫자가 아니거나 음수일 경우에 0 으로 변환
 			gap = Math.max(0, gap) || 0;
