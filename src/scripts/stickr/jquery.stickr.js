@@ -41,19 +41,24 @@
 			var observer = function() {
 				scrollY = $(win).scrollTop();
 
-				if (scrollY > thisOffsetY) {
-					// scrollY 값이 thisOffsetY 보다 더 클 경우 (this 엘리먼트가 상단 뷰포트를 벗어날 경우)
-					// .fixed 클래스를 추가하고 marginTop 값을 gap 값으로 지정한다
-					// .fixed 는 "position:"fixed" 포지션이 미리 CSS에서 선언되어 있어야 함
-					$this.addClass('fixed').css('margin-top', gap);
+				var originMarginTop = $this.css('margin-top').replace(/[^-\d\.]/g, '');
+				var styles = {};
+
+				if (scrollY < thisOffsetY) {
+					$this.removeClass('fixed absolute');
+					styles = {
+						position: '',
+						top: ''
+					};
 				} else {
-					// scrollY 값이 thisOffsetY 보다 작거나 같은 경우
-					// (this 엘리먼츠가 상단 뷰포트에 도달하지 못했을경우)
-					// .fixed 클래스와 스타일을 제거하여 초기화 시킨다
-					$this.removeClass('fixed').removeAttr('style');
+					$this.addClass('fixed').removeClass('absolute');
+					styles = {
+						position: 'fixed',
+						top: gap - originMarginTop
+					};
 				}
 
-				return false;
+				return $this.css(styles);
 			};
 
 			observer();
