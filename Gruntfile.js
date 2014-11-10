@@ -217,7 +217,7 @@ module.exports = function(grunt) {
 				tasks: ['copy:rootCfg']
 			},
 			grunt: {
-				files: 'Gruntfile.js',
+				files: ['Gruntfile.js', '**/*.json'],
 				tasks: [
 					'jshint',
 					'clean',
