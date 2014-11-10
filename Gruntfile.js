@@ -23,11 +23,12 @@ module.exports = function(grunt) {
 			options: {
 				force: true
 			},
-			scripts: "dist/**/*.js",
-			images: "dist/gh-pages/images/**/*.*",
-			html: "dist/gh-pages/**/*.html",
-			styles: "dist/gh-pages/styles/**/*.css",
-			fonts: "dist/gh-pages/fonts/**/*.*"
+			scripts: ['dist/**/*.js', '!dist/**/*.{min,pack}.js'],
+			minimizedJs: 'dist/**/*.{min,pack}.js',
+			images: 'dist/gh-pages/images/**/*.*',
+			html: 'dist/gh-pages/**/*.html',
+			styles: 'dist/gh-pages/styles/**/*.css',
+			fonts: 'dist/gh-pages/fonts/**/*.*'
 		},
 		uglify: {
 			pageScript: {
