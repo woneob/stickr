@@ -86,6 +86,7 @@ module.exports = function(grunt) {
 			style: {
 				options: {
 					compress: false,
+					compress: true,
 					cleancss: true,
 					banner: '<%= banner %>',
 					cleancssOptions: {
