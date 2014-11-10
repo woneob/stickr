@@ -65,7 +65,7 @@
                 return $this.css(styles);
             };
             observer();
-            $(win).on("scroll", observer);
+            $(win).on("scroll resize", observer);
         });
     };
 })(jQuery, window, document);
