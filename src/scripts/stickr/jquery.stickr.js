@@ -44,6 +44,12 @@
 						position: '',
 						top: ''
 					};
+				} else if (stopY && scrollY > stopY) {
+					$this.addClass('absolute').removeClass('fixed');
+					styles = {
+						position: 'absolute',
+						top: parentHeight - originMarginTop - thisHeight + gap
+					};
 				} else {
 					if (scrollY < thisOffsetY) {
 						$this.removeClass('fixed absolute');
