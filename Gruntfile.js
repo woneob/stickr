@@ -127,7 +127,7 @@ module.exports = function(grunt) {
 			minimizedJs: {
 				expand: true,
 				cwd: 'src/scripts/',
-				src: '**/*.min.js',
+				src: '**/*.{min,pack}.js',
 				dest: 'dist/gh-pages/scripts/',
 				extDot: 'last'
 			},
