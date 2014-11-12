@@ -37,29 +37,21 @@
                 var styles = {};
                 if (winHeight < thisHeight) {
                     $this.removeClass("fixed absolute");
-                    styles = {
-                        position: "",
-                        top: ""
-                    };
+                    styles.position = "";
+                    styles.top = "";
                 } else if (stopY && scrollY > stopY) {
                     $this.addClass("absolute").removeClass("fixed");
-                    styles = {
-                        position: "absolute",
-                        top: parentHeight - originMarginTop - thisHeight + gap
-                    };
+                    styles.position = "absolute";
+                    styles.top = parentHeight - originMarginTop - thisHeight + gap;
                 } else {
                     if (scrollY < thisOffsetY) {
                         $this.removeClass("fixed absolute");
-                        styles = {
-                            position: "",
-                            top: ""
-                        };
+                        styles.position = "";
+                        styles.top = "";
                     } else {
                         $this.addClass("fixed").removeClass("absolute");
-                        styles = {
-                            position: "fixed",
-                            top: gap - originMarginTop
-                        };
+                        styles.position = "fixed";
+                        styles.top = gap - originMarginTop;
                     }
                 }
                 return $this.css(styles);
