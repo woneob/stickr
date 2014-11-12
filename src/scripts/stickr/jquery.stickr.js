@@ -35,7 +35,7 @@
 			var observer = function() {
 				scrollY = $(win).scrollTop();
 
-				var originMarginTop = $this.css('margin-top').replace(/[^-\d\.]/g, '');
+				var originMarginTop = parseInt($this.css('margin-top'), 10);
 				var styles = {};
 
 				if (winHeight < thisHeight) {
