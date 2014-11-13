@@ -147,7 +147,8 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'src/',
 				src: ['*', '!*.handlebars'],
-				dest: 'dist/gh-pages/'
+				dest: 'dist/gh-pages/',
+				filter: 'isFile'
 			}
 		},
 		connect: {
