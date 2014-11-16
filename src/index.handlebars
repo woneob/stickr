@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="{{ description }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ name }} - {{ description }}</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="logotype">{{ name }}.js</h1>
+            <p class="desc">{{ description }}</p>
+
+            <div class="extLinks">
+                <dl class="downloads">
+                    <dt>Download <em>{{ name }}.js</em> v{{ version }}</dt>
+                    <dd><a href="{{ homepage }}/zipball/master" class="zip">.zip</a></dd>
+                    <dd><a href="{{ homepage }}/tarball/master" class="tar">tar.gz</a></dd>
+                </dl>
+
+                <span class="gotoGithub">
+                  <a href="{{ homepage }}">View the Project on <cite class="github">GitHub</cite></a>
+                </span>
+            </div>
+        </header>
+
+        <div class="socialButtons">
+            <ul>
+                <li>
+                    <iframe src="http://ghbtns.com/github-btn.html?user=woneob&amp;repo=stickr&amp;type=watch" width="50" height="20"></iframe>
+                </li>
+                <li>
+                    <iframe src="http://ghbtns.com/github-btn.html?user=woneob&amp;repo=stickr&amp;type=fork" width="53" height="20"></iframe>
+                </li>
+                <li>
+                    <a href="https://twitter.com/1upz" class="twitter-follow-button" data-show-count="false" lang="en">Follow @1upz</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="demo">
+            <h2>Stickr Examples</h2>
+            <div class="unitWrap">
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+                <div><span class="unit"></span></div>
+            </div>
+        </div>
+
+        <article class="article">
+            <h2>Introduction</h2>
+            <p>
+                <dfn>styckr.js</dfn> 는 스크롤 위치에 따라 엘리먼트가 윈도우의 뷰포트를 벗어날 경우, 
+                <code>position</code> 값을 <code>fixed</code>로 전환하여 위치를 고정하는 
+                <em>sticky element</em>(흔히 기획자들이 얘기하는 &quot;따라다니는 레이어&quot;)를 구현하는 
+                <a href="http://jquery.com">jQuery</a> 플러그인 입니다. 
+                버전 1.7 이상의 <a href="http://jquery.com">jQuery</a> 사용을 권장하며, 
+                Firefox, Chrome, Safari, <abbr title="Internet Explorer 7">IE7</abbr>+ 브라우저와
+                호환됩니다.
+            </p>
+
+            <p class="subTxt">
+                본 웹사이트는 소스의 호환성과는 별개로 
+                <abbr title="Hyper Text Markup Language 5">HTML5</abbr>, 
+                <abbr title="Cascading Style Sheets 3">CSS3</abbr>를 지원하는 브라우저에 맞춰져 있습니다.
+            </p>
+
+            <h2>Download</h2>
+
+            <p>
+                <a href="http://bower.io">Bower</a>를 사용하신다면 command line에서 아래의 명령어로
+                설치할 수 있습니다.
+            </p>
+
+            <pre><code>$ bower install stickr</code></pre>
+
+            <p>
+                직접 내려받아 사용하시길 원한다면 아래의 다운로드 링크를 클릭하거나
+                <a href="https://github.com/woneob/stickr/releases">Release 페이지</a>를 방문하여,
+                원하는 버전의 파일을 내려받으시면 됩니다.
+            </p>
+
+            <div class="downloadLink">
+                <a href="{{ homepage }}/zipball/master"><span>Download</span> as tar.gz</a>
+                <a href="{{ homepage }}/tarball/master"><span>Download</span> as zip</a>
+            </div>
+
+            <h2>Usage</h2>
+
+            <p>jQuery와 stickr.js 소스를 <code>script</code> 태그를 이용하여 불러옵니다.</p>
+
+            <p class="subTxt">
+                stickr.js는 jQuery 함수를 이용하는 플러그인이므로,
+                jQuery 소스가 먼저 선언돼야 합니다.
+            </p>
+
+            <pre><code class="html">&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;jquery.stickr.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+            <p>
+                기본적인 <abbr title="Hyper Text Markup Language">HTML</abbr> 형식은 별다른 규칙이
+                요구되지 않습니다.
+            </p>
+
+            <p class="subTxt">
+                단, 적용할 엘리먼트에 inline style 로 <code>top</code> 값을 지정을피하시고,
+                불가피하게 inline style이 필요하다면 <code>margin-top</code>을 이용하시기 바랍니다.
+            </p>
+
+            <pre><code class="html">&lt;div id=&quot;container&quot;&gt;
+    &lt;span class=&quot;stickr&quot;&gt;Some text&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+            <p>
+                스크롤을 움직여 sticky 상태로 전환 될 때, 엘리먼트의 <code>position</code> 값은
+                <code>fixed</code>로 변경되므로 <code>float</code>과 같은 속성을 이용하여
+                레이아웃을 구성하지 마십시오.
+            </p>
+
+            <p class="subTxt">
+                만약 <code>float</code> 속성을 사용해야 한다면, 엘리먼트를 감싸는 wrapper 엘리먼트를
+                만들어 지정하세요.
+            </p>
+
+            <pre><code class="css">#container .stickr {
+    width: 80px;
+    height: 40px;
+    background-color: #333;
+}</code></pre>
+
+            <p>
+                상위 계층의 엘리먼트 중 <code>position</code> 속성값이
+                <code>relative</code>, <code>absolute</code> 혹은 <code>fixed</code>로 지정된
+                엘리먼트가 존재할 경우, 이 부모 엘리먼트의 영역 내에서만
+                <code>fixed</code> 값이 유지되고 그 이후부터는 <code>absolute</code> 상태로 전환되어
+                더는 화면에 고정되지 않습니다.
+            </p>
+
+            <p class="subTxt">
+                이는 fixed 된 엘리먼트로 인해 하단에 위치한 푸터나 콘텐츠가 가려지는 문제를 방지합니다.
+            </p>
+
+            <pre><code class="css">#container {
+    position: relative; /* Set the parent container */
+    width: 80px;
+    height: 500px; /* Sticky area */
+    background-color: #eee;
+}
+
+#container .stickr {
+    width: 80px;
+    height: 40px;
+    background-color: #333;
+}</code></pre>
+
+            <p>
+                만약 이러한 종료구간을 원치 않는다면 <code>data-stickr-stop</code> 속성과 함께
+                <code>false</code> 값을 추가하면 됩니다.
+            </p>
+
+            <p class="subTxt">
+                <code>data-stickr-stop</code> 속성은 필수 값이 아닙니다.
+                <code>false</code>가 아닐 경우, <code>true</code>나 비어있는 값으로 지정할 필요가 없으니,
+                속성을 삭제하셔도 무방합니다.
+            </p>
+
+            <pre><code class="html">&lt;div id=&quot;container&quot;&gt;
+    &lt;span class=&quot;stickr&quot; data-stickr-stop=&quot;false&quot;&gt;Some text&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+            <p>
+                윈도우 뷰포트 상단과의 간격이 필요하면 <code>data-stickr-gap</code> 속성을
+                숫자 값과 함께 추가하세요.
+                숫자의 단위는 <abbr title="pixel">px</abbr> 입니다.
+            </p>
+
+            <p class="subTxt">
+                <code>data-stickr-gap</code> 속성은 필수 값이 아닙니다.
+                간격이 필요 없으면, <code>0</code>이나 비어있는 값으로 지정할 필요가 없으니,
+                속성을 삭제하셔도 무방합니다.
+            </p>
+
+            <pre><code class="html">&lt;div id=&quot;container&quot;&gt;
+    &lt;span class=&quot;stickr&quot; data-stickr-gap=&quot;10&quot;&gt;Some text&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+
+            <p>
+                <abbr title="Hyper Text Markup Language">HTML</abbr>과 
+                <abbr title="Cascading Style Sheets">CSS</abbr> 설정이 완료되었다면 stickr를 호출합니다.
+            </p>
+
+            <pre><code class="javascript">$('.stickr').stickr();</code></pre>
+        </article>
+
+        <div class="githubRibbon">
+            <a href="{{ homepage }}">
+                <span>Fork me on Github</span>
+            </a>
+        </div>
+
+        <footer class="footer">
+            <p>
+                Created by <a href="http://1upnote.com">1UP</a>. 
+                Code licensed under the <a href="http://1up.mit-license.org/">MIT</a> license.
+            </p>
+        </footer>
+
+        <script src="./scripts/libs/jquery.min.js"></script>
+        <script src="./scripts/libs/highlight.pack.js"></script>
+        <script src="./scripts/stickr/jquery.stickr.min.js"></script>
+        <script src="./scripts/common.min.js"></script>
+        <script src="//platform.twitter.com/widgets.js"></script>
+    </body>
+</html>

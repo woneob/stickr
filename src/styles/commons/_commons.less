@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "NanumGothic";
+    src: url("../fonts/NanumGothic.woff");
+}
+
+html {
+    font-size: @baseFontSize;
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    font-size: 1.5rem;
+    font-family: @defaultFonts;
+    line-height: 1.4;
+    letter-spacing: -.01em;
+    color: (@bandicoot - 45%);
+}
+
+a {
+    color: (@viking - 35);
+    text-decoration: none;
+
+    &:hover {
+        color: (@viking - 50%);
+    }
+}
+
+dfn, em, cite {
+    font-style: normal;
+}
+
+em {
+    font-weight: bold;
+}
+
+code, var, kbd {
+    background: (@bandicoot + 120%);
+    border-radius: 4px;
+    font-size: 85%;
+    padding: .14em .4em;
+    border: 1px solid (@bandicoot + 108%);
+    text-shadow: 0 1px 0 @white;
+    font-family: @monospacedFonts;
+    color: @bandicoot - 30%;
+}

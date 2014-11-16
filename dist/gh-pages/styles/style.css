@@ -1,0 +1,104 @@
+@charset "utf-8";
+/*!
+ * Name: stickr - jQuery plugin for sticky elements
+ * Version: v1.0.0
+ * Homepage: https://github.com/woneob/stickr
+ * License: MIT
+ */
+html,body,body div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,figure,footer,header,menu,nav,section,time,mark,audio,video,details,summary{margin:0;padding:0;border:0;font-size:100%;font-weight:400;vertical-align:baseline;background:0 0}
+article,aside,figure,footer,header,nav,section,details,summary{display:block}
+html{box-sizing:border-box}
+*,:before,:after{box-sizing:inherit}
+img,object,embed{max-width:100%}
+html{overflow-y:scroll}
+ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:0 0}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+th{font-weight:700;vertical-align:bottom}
+td{font-weight:400;vertical-align:top}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+pre{white-space:pre;white-space:pre-wrap;white-space:pre-line;word-wrap:break-word}
+input[type=radio]{vertical-align:text-bottom}
+input[type=checkbox]{vertical-align:bottom}
+.ie7 input[type=checkbox]{vertical-align:baseline}
+.ie6 input{vertical-align:text-bottom}
+select,input,textarea{font:99% sans-serif}
+table{font-size:inherit;font:100%}
+small{font-size:85%}
+strong{font-weight:700}
+td,td img{vertical-align:top}
+sub,sup{font-size:75%;line-height:0;position:relative}
+sup{top:-.5em}
+sub{bottom:-.25em}
+pre,code,kbd,samp{font-family:monospace,sans-serif}
+.clickable,label,input[type=button],input[type=submit],input[type=file],button{cursor:pointer}
+button,input,select,textarea{margin:0}
+button,input[type=button]{width:auto;overflow:visible}
+.ie7 img{-ms-interpolation-mode:bicubic}
+.clearfix:before,.clearfix:after{content:"\0020";display:block;height:0;overflow:hidden}
+.clearfix:after{clear:both}
+.clearfix{zoom:1}
+@font-face{font-family:NanumGothic;src:url(../fonts/NanumGothic.woff)}
+html{font-size:62.5%;-webkit-text-size-adjust:none}
+body{font-size:1.5rem;font-family:NanumGothic,arial,sans-serif;line-height:1.4;letter-spacing:-.01em;color:#51524a}
+a{color:#39b1b0;text-decoration:none}
+a:hover{color:#2aa2a1}
+dfn,em,cite{font-style:normal}
+em{font-weight:700}
+code,var,kbd{background:#f6f7ef;border-radius:4px;font-size:85%;padding:.14em .4em;border:1px solid #eaebe3;text-shadow:0 1px 0 #fff;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#606159}
+.hljs{display:block;white-space:pre;-webkit-text-size-adjust:none}
+.hljs.html .hljs-tag .hljs-title{color:#4fe8e2}
+.hljs.html .hljs-tag .hljs-attribute{color:#5fbfbb}
+.hljs.html .hljs-tag .hljs-value{color:#bde383}
+.hljs.css .hljs-id{color:#4fe8e2}
+.hljs.css .hljs-class{color:#5fbfbb}
+.hljs.css .hljs-value .hljs-number{color:#f0964f}
+.hljs.css .hljs-value .hljs-hexcolor{color:#43bed4}
+.hljs.javascript .hljs-string{color:#bde383}
+.hljs .hljs-comment{opacity:.5}
+.header{padding:7rem 0 2rem}
+.header .logotype{width:23rem;height:9rem;overflow:hidden;margin:0 auto 2rem;text-indent:-999999rem;background:url(../images/logo.svg) no-repeat 50% 0;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain}
+.header .desc{text-align:center;font-size:1.6rem;color:#9c9d95}
+.header .extLinks{text-align:center;font-size:1.3rem;color:#a6a79f}
+.header .extLinks .downloads{display:inline-block}
+.header .extLinks .downloads dt{display:inline-block;margin-right:.4rem}
+.header .extLinks .downloads dt:before{content:"";display:inline-block;width:1.6rem;height:1.6rem;margin-right:.4rem;vertical-align:middle;background:url(../images/icon_download.svg) no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain}
+.header .extLinks .downloads dd{display:inline-block}
+.header .extLinks .downloads dd:after{content:","}
+.header .extLinks .downloads dd:last-child:after{content:""}
+.header .extLinks .gotoGithub{display:inline-block}
+.header .extLinks .gotoGithub:before{content:"or"}
+.header .extLinks .gotoGithub .github:after{content:"";display:inline-block;width:1.6rem;height:1.6rem;margin-left:.3rem;vertical-align:middle;background:url(../images/icon_github.svg) no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain}
+.socialButtons{margin-bottom:6rem;text-align:center}
+.socialButtons li{display:inline-block;margin:0 .1rem}
+.socialButtons li iframe{border:0 none;overflow:hidden}
+.demo{position:relative;height:90rem;margin-bottom:3rem;overflow:hidden;background-color:#5cd4d3;background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM1Y2Q0ZDMiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzY2ZGVkZCIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);background-image:-webkit-linear-gradient(top,#5cd4d3,#66dedd);background-image:-moz-linear-gradient(top,#5cd4d3,#66dedd);background-image:-o-linear-gradient(top,#5cd4d3,#66dedd);background-image:linear-gradient(to bottom,#5cd4d3,#66dedd)}
+.demo h2{position:absolute;z-index:2;top:0;right:0;left:0;width:10rem;margin:auto;padding:.4rem 0;background:rgba(0,0,0,.3);text-align:center;font-size:1.2rem;color:#fff}
+.demo .unitWrap{display:table;table-layout:fixed;width:100%}
+.demo .unitWrap>div{display:table-cell;vertical-align:top}
+.demo .unitWrap>div .unit{display:block;width:2rem;height:2rem;background-color:#fff;border-radius:50%;-webkit-box-shadow:0 0 0 4px rgba(255,255,255,.3);-moz-box-shadow:0 0 0 4px rgba(255,255,255,.3);box-shadow:0 0 0 4px rgba(255,255,255,.3);visibility:hidden}
+article{max-width:86rem;margin:0 auto;padding:0 1rem}
+article h2{margin-top:3.2rem;padding:0 .8rem;font-weight:400;font-size:3.2rem;line-height:1;color:#3eb6b5}
+article p{margin-top:1.2rem;padding:0 .8rem;font-size:1.5rem;line-height:1.6}
+article p.subTxt{margin-top:0;font-size:1.2rem;color:#979890}
+article a{border-bottom:1px dotted #3eb6b5}
+article a[href*="//"]{position:relative;margin-right:1.5em}
+article a[href*="//"]:after{content:"";position:absolute;top:.1em;right:-1.066667em;bottom:0;margin:auto;width:.933333em;height:.866667em;background:url(../images/icon_external.svg) no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain}
+article pre{margin:1rem 0 2.2rem;overflow-x:auto;overflow-y:hidden;white-space:pre-wrap;word-wrap:normal;-webkit-overflow-scrolling:touch}
+article pre>code{display:block;padding:1rem 2rem;background:#383931;border-radius:5px;text-shadow:none;white-space:pre;font-size:1.4rem;color:#c4c5bd}
+article .downloadLink{margin-top:1rem}
+article .downloadLink a{display:inline-block;margin-right:.5rem;margin-bottom:.4rem;padding:1rem 2rem;border-width:.1rem;border-style:solid;border-color:#f1f2ea #e2e3db #d3d4cc;-webkit-border-radius:.4rem;-webkit-background-clip:padding-box;-moz-border-radius:.4rem;-moz-background-clip:padding;border-radius:.4rem;background-clip:padding-box;background-color:#fff;background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmY2ZjZmIiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y4ZjhmMSIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2xlc3NoYXQtZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);background-image:-webkit-linear-gradient(top,#fcfcfb,#f8f8f1);background-image:-moz-linear-gradient(top,#fcfcfb,#f8f8f1);background-image:-o-linear-gradient(top,#fcfcfb,#f8f8f1);background-image:linear-gradient(to bottom,#fcfcfb,#f8f8f1);-webkit-box-shadow:inset 0 0 0 .1rem #fff,0 .1rem 0 rgba(0,0,0,.05);-moz-box-shadow:inset 0 0 0 .1rem #fff,0 .1rem 0 rgba(0,0,0,.05);box-shadow:inset 0 0 0 .1rem #fff,0 .1rem 0 rgba(0,0,0,.05);font-size:1.2rem;line-height:1;text-align:center;color:#babbb3;text-shadow:0 1px 0 #fff}
+article .downloadLink a span{font-size:1.3rem;color:#56574f}
+article .downloadLink a:before{content:"";display:inline-block;width:2rem;height:1.8rem;margin-right:.4rem;background:url(../images/icon_download.svg) no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;vertical-align:middle}
+article .downloadLink a:after{display:none}
+article .downloadLink a:hover{border-color:#e7e8e0 #d8d9d1 #c9cac2}
+.githubRibbon{position:absolute;top:0;right:0;width:20rem;height:20rem;overflow:hidden}
+.githubRibbon a{position:absolute;top:25%;left:25%;display:block;width:100%;height:2.6rem;margin-top:-1.3rem;padding:.8rem 3rem;background-color:#2d2d29;-webkit-box-shadow:0 .1rem .1rem rgba(0,0,0,.1);-moz-box-shadow:0 .1rem .1rem rgba(0,0,0,.1);box-shadow:0 .1rem .1rem rgba(0,0,0,.1);font-size:1rem;line-height:1;letter-spacing:0;text-align:center;color:#eee;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}
+.githubRibbon a:hover{background-color:#000;color:#f3f3f3}
+.footer{padding:3rem 0 3.5rem;border-top:.1rem solid #ecede5;background-color:#f6f7ef;font-size:1.2rem;text-align:center;color:#9c9d95}
+.footer a:hover{border-bottom:1px dotted #3eb6b5}
