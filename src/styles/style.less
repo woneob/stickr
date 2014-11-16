@@ -2,6 +2,308 @@
 
 @import "./settings/_lesshat.less";
 @import "./settings/_variables.less";
-
-@import "./commons/_normalize.less";
+@import "./commons/_reset.less";
 @import "./commons/_commons.less";
+@import "./commons/_highlight.less";
+
+.header {
+    padding: 7rem 0 2rem;
+
+    .logotype {
+        width: 23rem;
+        height: 9rem;
+        overflow: hidden;
+        margin: 0 auto 2rem;
+        text-indent: -999999rem;
+        background: url("@{img-url}/logo.svg") no-repeat 50% 0;
+        .background-size(contain);
+    }
+
+    .desc {
+        text-align: center;
+        font-size: 1.6rem;
+        color: (@bandicoot + 30);
+    }
+
+    .extLinks {
+        text-align: center;
+        font-size: 1.3rem;
+        color: (@bandicoot + 40);
+
+        .downloads {
+            display: inline-block;
+
+            dt {
+                display: inline-block;
+                margin-right: .4rem;
+
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    margin-right: .4rem;
+                    vertical-align: middle;
+                    background: url("@{img-url}/icon_download.svg") no-repeat;
+                    .background-size(contain);
+                }
+            }
+
+            dd {
+                display: inline-block;
+
+                &:after {
+                    content: ",";
+                }
+
+                &:last-child:after {
+                    content: "";
+                }
+            }
+        }
+
+        .gotoGithub {
+            display: inline-block;
+
+            &:before {
+                content: "or";
+            }
+
+            .github {
+                &:after {
+                    content: "";
+                    display: inline-block;
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    margin-left: .3rem;
+                    vertical-align: middle;
+                    background: url("@{img-url}/icon_github.svg") no-repeat;
+                    .background-size(contain);
+                }
+            }
+        }
+    }
+}
+
+.socialButtons {
+    margin-bottom: 6rem;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        margin: 0 .1rem;
+
+        iframe {
+            border: 0 none;
+            overflow: hidden;
+        }
+    }
+}
+
+.demo {
+    position: relative;
+    height: 90rem;
+    margin-bottom: 3rem;
+    overflow: hidden;
+    background-color: @viking;
+    .background-image(linear-gradient(to bottom, @viking, @viking + 10));
+
+    h2 {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 10rem;
+        margin: auto;
+        padding: .4rem 0;
+        background: rgba(0, 0, 0, .3);
+        text-align: center;
+        font-size: 1.2rem;
+        color: @white;
+    }
+
+    .unitWrap {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+
+        > div {
+            display: table-cell;
+            vertical-align: top;
+
+            .unit {
+                display: block;
+                width: 2rem;
+                height: 2rem;
+                background-color: @white;
+                border-radius: 50%;
+                .box-shadow(0 0 0 4px fade(@white, 30%));
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+article {
+    max-width: 86rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    h2 {
+        margin-top: 3.2rem;
+        padding: 0 .8rem;
+        font-weight: normal;
+        font-size: 3.2rem;
+        line-height: 1;
+        color: @viking - 30;
+    }
+
+    p {
+        margin-top: 1.2rem;
+        padding: 0 .8rem;
+        font-size: 1.5rem;
+        line-height: 1.6;
+
+        &.subTxt {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: (@bandicoot + 25%);
+        }
+    }
+
+    a {
+        border-bottom: 1px dotted (@viking - 30%);
+
+        &[href*="//"] {
+            position: relative;
+            margin-right: 1.5em;
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: .1em;
+                right: -1.066667em;
+                bottom: 0;
+                margin: auto;
+                width: .933333em;
+                height: .866667em;
+                background: url("@{img-url}/icon_external.svg") no-repeat;
+                .background-size(contain);
+            }
+        }
+    }
+
+    pre {
+        margin: 1rem 0 2.2rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: pre-wrap;
+        word-wrap: normal;
+        -webkit-overflow-scrolling: touch;
+
+        > code {
+            display: block;
+            padding: 1rem 2rem;
+            background: (@bandicoot - 70);
+            border-radius: 5px;
+            text-shadow: none;
+            white-space: pre;
+            font-size: 1.4rem;
+            color: (@bandicoot + 70);
+        }
+    }
+
+    .downloadLink {
+        margin-top: 1rem;
+
+        a {
+            display: inline-block;
+            margin-right: .5rem;
+            margin-bottom: .4rem;
+            padding: 1rem 2rem;
+            border-width: .1rem;
+            border-style: solid;
+            border-color: (@bandicoot + 115%) (@bandicoot + 100%) (@bandicoot + 85%);
+            .border-radius(.4rem);
+            background-color: @white;
+            .background-image(linear-gradient(to bottom, #fcfcfb, #f8f8f1));
+            .box-shadow(inset 0 0 0 .1rem @white, 0 .1rem 0 rgba(0,0,0,.05));
+            font-size: 1.2rem;
+            line-height: 1;
+            text-align: center;
+            color: (@bandicoot + 60%);
+            text-shadow: 0 1px 0 #fff;
+
+            span {
+                font-size: 1.3rem;
+                color: (@bandicoot - 40%);
+            }
+
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 2rem;
+                height: 1.8rem;
+                margin-right: .4rem;
+                background: url("@{img-url}/icon_download.svg") no-repeat;
+                .background-size(contain);
+                vertical-align: middle;
+            }
+
+            &:after {
+                display: none;
+            }
+
+            &:hover {
+                border-color: (@bandicoot + 105%) (@bandicoot + 90%) (@bandicoot + 75%);
+            }
+        }
+    }
+}
+
+.githubRibbon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20rem;
+    height: 20rem;
+    overflow: hidden;
+
+    a {
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        display: block;
+        width: 100%;
+        height: 2.6rem;
+        margin-top: -1.3rem;
+        padding: .8rem 3rem;
+        background-color: #2d2d29;
+        .box-shadow(0 .1rem .1rem rgba(0, 0, 0, .1));
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: center;
+        color: #eee;
+        .rotate(45deg);
+
+        &:hover {
+            background-color: #000;
+            color: #f3f3f3;
+        }
+    }
+}
+
+.footer {
+    padding: 3rem 0 3.5rem;
+    border-top: .1rem solid (@bandicoot + 110%);
+    background-color: (@bandicoot + 120%);
+    font-size: 1.2rem;
+    text-align: center;
+    color: (@bandicoot + 30%);
+
+    a:hover {
+        border-bottom: 1px dotted (@viking - 30%);
+    }
+}

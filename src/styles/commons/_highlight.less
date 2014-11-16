@@ -1,0 +1,55 @@
+/*!
+* Syntanx highlight styles for highlight.js
+*/
+
+.hljs {
+    display: block;
+    white-space: pre;
+    -webkit-text-size-adjust: none;
+
+    &.html {
+        .hljs-tag {
+            .hljs-title {
+                 color: @turquoiseBlue;
+            }
+
+            .hljs-attribute {
+                color: @fountainBlue;
+            }
+
+            .hljs-value {
+                color: @yellowGreen;
+            }
+        }
+    }
+
+    &.css {
+        .hljs-id {
+            color: @turquoiseBlue;
+        }
+
+        .hljs-class {
+            color: @fountainBlue;
+        }
+
+        .hljs-value {
+            .hljs-number {
+                color: @jaffa;
+            }
+
+            .hljs-hexcolor {
+                color: @scooter;
+            }
+        }
+    }
+
+    &.javascript {
+        .hljs-string {
+            color: @yellowGreen;
+        }
+    }
+
+    .hljs-comment {
+        opacity: .5;
+    }
+}

@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 				files: {
 					src: [
 						'src/scripts/**/*.js',
-						'!src/scripts/**/*.min.js'
+						'!src/scripts/**/*.{min,pack}.js'
 					]
 				}
 			}
@@ -23,11 +23,12 @@ module.exports = function(grunt) {
 			options: {
 				force: true
 			},
-			scripts: "dist/**/*.js",
-			images: "dist/gh-pages/images/**/*.*",
-			html: "dist/gh-pages/**/*.html",
-			styles: "dist/gh-pages/styles/**/*.css",
-			fonts: "dist/gh-pages/fonts/**/*.*"
+			scripts: ['dist/**/*.js', '!dist/**/*.{min,pack}.js'],
+			minimizedJs: 'dist/**/*.{min,pack}.js',
+			images: 'dist/gh-pages/images/**/*.*',
+			html: 'dist/gh-pages/**/*.html',
+			styles: 'dist/gh-pages/styles/**/*.css',
+			fonts: 'dist/gh-pages/fonts/**/*.*'
 		},
 		uglify: {
 			pageScript: {
@@ -39,7 +40,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: 'src/scripts/',
-						src: ['**/*.js', '!**/*.min.js'],
+						src: ['**/*.js', '!**/*.{min,pack}.js'],
 						dest: 'dist/gh-pages/scripts/',
 						ext: '.min.js',
 						extDot: 'last'
@@ -74,17 +75,14 @@ module.exports = function(grunt) {
 		'compile-handlebars': {
 			index: {
 				template: 'src/index.handlebars',
-				templateData: [
-					'package.json',
-					'src/data/index.json'
-				],
+				templateData: 'package.json',
 				output: 'dist/gh-pages/index.html'
 			}
 		},
 		less: {
 			style: {
 				options: {
-					compress: false,
+					compress: true,
 					cleancss: true,
 					banner: '<%= banner %>',
 					cleancssOptions: {
@@ -126,8 +124,9 @@ module.exports = function(grunt) {
 			minimizedJs: {
 				expand: true,
 				cwd: 'src/scripts/',
-				src: '**/*.min.js',
-				dest: 'dist/gh-pages/scripts/'
+				src: '**/*.{min,pack}.js',
+				dest: 'dist/gh-pages/scripts/',
+				extDot: 'last'
 			},
 			images: {
 				expand: true,
@@ -145,7 +144,8 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'src/',
 				src: ['*', '!*.handlebars'],
-				dest: 'dist/gh-pages/'
+				dest: 'dist/gh-pages/',
+				filter: 'isFile'
 			}
 		},
 		connect: {
@@ -163,7 +163,7 @@ module.exports = function(grunt) {
 			scripts: {
 				files: [
 					'src/scripts/**/*.js',
-					'!src/scripts/**/*.min.js'
+					'!src/scripts/**/*.{min,pack}.js'
 				],
 				tasks: [
 					'jshint',
@@ -172,8 +172,11 @@ module.exports = function(grunt) {
 				]
 			},
 			minimizedJs: {
-				files: 'src/scripts/**/*.min.js',
-				tasks: 'copy:minimizedJs'
+				files: 'src/scripts/**/*.{min,pack}.js',
+				tasks: [
+					'clean:minimizedJs',
+					'copy:minimizedJs'
+				]
 			},
 			html: {
 				files: 'src/**/*.handlebars',
@@ -212,7 +215,7 @@ module.exports = function(grunt) {
 				tasks: ['copy:rootCfg']
 			},
 			grunt: {
-				files: 'Gruntfile.js',
+				files: ['Gruntfile.js', '**/*.json'],
 				tasks: [
 					'jshint',
 					'clean',
